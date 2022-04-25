@@ -7,8 +7,7 @@ CREATE TABLE public.departamento (
 CREATE TABLE public.pessoa (
                         id INT PRIMARY KEY,
                         nome VARCHAR(100),
-                        departamento_id INT,
-                        tarefa_id INT
+                        departamento_id INT
 );
 
 CREATE TABLE public.tarefa (
@@ -22,11 +21,10 @@ CREATE TABLE public.tarefa (
                         finalizado BOOLEAN
 );
 
-ALTER TABLE pessoa ADD CONSTRAINT fk_pessoa_departamento FOREIGN KEY (departamento_id) REFERENCES departamento (id);
-ALTER TABLE pessoa ADD CONSTRAINT fk_pessoa_tarefa FOREIGN KEY (tarefa_id) REFERENCES tarefa (id);
+ALTER TABLE public.pessoa ADD CONSTRAINT fk_pessoa_departamento FOREIGN KEY (departamento_id) REFERENCES public.departamento (id);
 
-ALTER TABLE tarefa ADD CONSTRAINT fk_tarefa_departamento FOREIGN KEY (departamento_id) REFERENCES departamento(id);
-ALTER TABLE tarefa ADD CONSTRAINT fk_tarefa_pessoa FOREIGN KEY (pessoa_id) REFERENCES pessoa(id);
+ALTER TABLE public.tarefa ADD CONSTRAINT fk_tarefa_departamento FOREIGN KEY (departamento_id) REFERENCES public.departamento(id);
+ALTER TABLE public.tarefa ADD CONSTRAINT fk_tarefa_pessoa FOREIGN KEY (pessoa_id) REFERENCES public.pessoa(id);
 
 
 
