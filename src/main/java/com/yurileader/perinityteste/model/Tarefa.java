@@ -24,8 +24,7 @@ public class Tarefa {
     @OneToOne(fetch = FetchType.LAZY)
     private Departamento departamento;
     private Long duracao;
-
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "pessoa_id")
     private Pessoa pessoaAlocada;
     private boolean finalizado;

@@ -24,8 +24,5 @@ public class Pessoa {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id")
     private Departamento departamento;
-    @OneToMany
-    @JoinColumn(name = "pessoa_id")
-    private List<Tarefa> tarefas;
 
 }
