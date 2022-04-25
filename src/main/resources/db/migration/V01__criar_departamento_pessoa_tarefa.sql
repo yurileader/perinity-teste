@@ -1,16 +1,17 @@
-CREATE TABLE departamento (
+CREATE SCHEMA IF NOT EXISTS  public;
+CREATE TABLE public.departamento (
     id INT PRIMARY KEY,
     titulo VARCHAR(50)
 );
 
-CREATE TABLE pessoa (
+CREATE TABLE public.pessoa (
                         id INT PRIMARY KEY,
                         nome VARCHAR(100),
                         departamento_id INT,
                         tarefa_id INT
 );
 
-CREATE TABLE tarefa (
+CREATE TABLE public.tarefa (
                         id INT PRIMARY KEY,
                         titulo VARCHAR(50),
                         descricao VARCHAR(100),
