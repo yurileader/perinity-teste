@@ -14,8 +14,8 @@ public class TarefaDTO {
     private String titulo;
     private String descricao;
     private LocalDate prazo;
-    private DepartamentoDTO departamento;
+    private Long departamento;
     private Long duracao;
-    private PessoaDTO pessoaAlocada;
+    private Long pessoaAlocada;
     private boolean finalizado;
 }
