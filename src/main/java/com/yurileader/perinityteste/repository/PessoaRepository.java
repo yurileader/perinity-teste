@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
@@ -16,5 +17,8 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
             "JOIN FETCH Departamento d ON d.id = p.departamento.id" )
     List<PessoaDTO> listarPessoasHoras();
 
+    @Query("SELECT p FROM Pessoa  p WHERE lower(p.nome) LIKE %:nome% " )
+    Optional<Pessoa> findByNome(String nome);
 
+    void deleteByIdAndDepartamento_Id(Long id, Long departamento_id);
 }
