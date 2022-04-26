@@ -3,7 +3,7 @@ package com.yurileader.perinityteste.service;
 import com.yurileader.perinityteste.dto.PessoaDTO;
 import com.yurileader.perinityteste.dto.PessoaDTOInput;
 import com.yurileader.perinityteste.dto.PessoaVO;
-import com.yurileader.perinityteste.exceptionhandler.exceptions.DepartamentoNaoEncontrado;
+import com.yurileader.perinityteste.exceptionhandler.exceptions.DepartamentoNaoEncontradoException;
 import com.yurileader.perinityteste.exceptionhandler.exceptions.PessoaNaoEncontradaOuNaoExisteException;
 import com.yurileader.perinityteste.model.Departamento;
 import com.yurileader.perinityteste.model.Pessoa;
@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -44,7 +43,7 @@ public class PessoaService {
     public PessoaVO atualizar(PessoaDTOInput pessoaDTO, Long id) {
         Pessoa pessoaCarregada = buscarPessoaPorId(id);
         Departamento departamento = departamentoRepository.findById(pessoaDTO.getDepartamento())
-                .orElseThrow(() -> new DepartamentoNaoEncontrado("Departamento não encontrado ou não existente"));
+                .orElseThrow(() -> new DepartamentoNaoEncontradoException("Departamento não encontrado ou não existente"));
         pessoaCarregada.setDepartamento(departamento);
         BeanUtils.copyProperties(pessoaDTO, pessoaCarregada);
 
