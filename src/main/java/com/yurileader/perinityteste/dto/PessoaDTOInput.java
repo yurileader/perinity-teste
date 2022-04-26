@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 public class PessoaDTOInput {
 
     private String nome;
-    private String departamento;
-    private Long totalHoras;
+    private Long departamento;
 }
